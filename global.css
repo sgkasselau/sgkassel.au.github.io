@@ -1,0 +1,605 @@
+:root{
+  --bg-color:#e7e6df;
+  --base:#0b1752;
+  --primary:#86451c;
+  --secondary:rgba(11,23,82,70%);
+  --gray:#2d3248;
+  --gray-border:#08103b
+  --dark-mode-base:#abb2bf;
+  --dark-mode-bg:#282c34;
+  --light-mode-base:#0b1752;
+  --light-mode-bg:#e7e6df;
+  --menu-primary:#d19a66;
+}
+
+[data-theme=dark]{
+  --bg-color:#282c34;
+  --base:#abb2bf;
+  --primary:#d19a66;
+  --secondary:#828997;
+  --gray-border:#5c6370;
+  --gray:#fff
+}
+
+html{
+  font-size:100
+}
+
+body{
+  margin:0 0 0 calc(100vw - 100%);
+  background-color:var(--bg-color);
+  color:var(--base);
+  line-height:1.625;
+  font-size:1rem;
+  -ms-text-size-adjust:100%;
+  -webkit-text-size-adjust:100%;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding-left: 1dvw;
+  padding-right: 1dvw;
+}
+
+body,h1,h2,h3,h4,h5,h6{
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight:600
+}
+
+h1{
+  font-size:2.5rem;
+  line-height:3.25rem;
+  margin-top:6.5rem;
+  margin-bottom:1.625rem
+}
+
+h2{
+  font-size:1.6875rem;
+  line-height:2.4375rem
+}
+
+h2,h3{
+  margin-top:3.25rem;
+  margin-bottom:.8125rem
+}
+
+h3{
+  font-size:1.375rem;
+  line-height:1.625rem
+}
+
+h4{
+  font-size:1.2rem;
+  margin-top:2.4375rem
+}
+
+h4,h5{
+  line-height:1.625rem;
+  margin-bottom:.8125rem
+}
+
+h5,h6{
+  font-size:1rem;
+  margin-top:4.0625rem
+}
+
+h6{
+  line-height:1.625rem;
+  margin-bottom:.8125rem
+}
+
+img{
+  max-width:100%;
+  margin:inherit auto
+}
+
+hr,img{
+  border:0;
+  display:block
+}
+
+hr{
+  color:var(--base);
+  height:1.625rem;
+  margin:3.25rem auto;
+  background-size:100% 26px;
+  background-image:linear-gradient(180deg,transparent 1px,transparent 11px,var(--base) 0,var(--base) 15px,transparent 0,transparent 26px);
+  width:6.25rem
+}
+
+a{
+  color:var(--primary);
+  text-decoration:none
+}
+
+a:active,a:focus,a:hover{
+  color:var(--secondary)
+}
+
+b,strong{
+  font-weight:600
+}
+
+ul{
+  list-style:square;
+  margin-bottom:1.625rem
+}
+
+ul li{
+  padding:0 .3125rem;
+  margin-bottom:.625rem
+}
+
+p{
+  line-height:1.625rem;
+  margin-bottom:1.625rem
+}
+
+blockquote{
+  padding:0;
+  font-style:italic;
+  text-align:center
+}
+
+figure{
+  display:block;
+  width:100%;
+  height:auto
+}
+
+figcaption{
+  line-height:1.21875rem;
+  margin-top:.40625rem;
+  color:var(--base);
+  font-size:.875rem;
+  font-style:italic;
+  margin-bottom:0;
+  text-align:center
+}
+
+layout {
+  max-width:50rem;
+  padding-left: 1dvw;
+  padding-right: 1dvw;
+}
+
+/* Pure CSS top menu */
+
+
+/* Better box-model */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+nav li {
+  width: 100%;
+}
+
+
+/* Screen reader only */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+
+/* Top menu base style - mobile first (see below for media directives for larger devices) */
+
+/* Hamburger button styling */
+
+.menu-toggle {
+  display: inline-block;
+  padding: 4px 4px 6px 4px;
+  line-height: 1em;
+  font-size: 1em;
+  background-color: var(--bg-color);
+  cursor: pointer;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+  color: var(--menu-primary);
+}
+
+
+/* Hamburger dropdown menu styling */
+
+.hamburger-house {
+  left: 75vw;
+  top: 0px;
+  float: right;
+  padding-top: 10px;
+  position: absolute;
+}
+
+.main-menu-wrapper {
+  float: right;
+  padding-top: 10px;
+}
+
+.main-menu {
+  display: none;
+  position: absolute;
+  /* Push menu to the left for future repositioning */
+  left: -200px;
+  transition: left 0.3s ease,
+              box-shadow 0.3s ease;
+  z-index: 999;
+}
+
+.main-menu ul {
+  /*background: #1a1a1a;*/
+  background: #000;
+  display: inline-block;
+  -webkit-box-shadow: -8px 0 8px rgba(0,0,0,.5);
+  -moz-box-shadow: -8px 0 8px rgba(0,0,0,.5);
+  list-style: none;
+  margin-top: 0px;
+  box-shadow: -8px 0 8px rgba(0,0,0,.5);
+  width: 200px;
+}
+
+
+/* Hamburger dropdown menu links */
+
+.main-menu a {
+  float: none;
+  padding: 11px 11px;
+  margin: 0;
+  text-align: left;
+  color: var(--menu-primary);
+  border-bottom: 1px solid #000;
+  text-decoration: none;
+  height: auto;
+  line-height: 1rem;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+
+/* Hamburger dropdown close button */
+
+.main-menu a.menu-close {
+  border-bottom: 0;
+}
+
+.main-menu .menu-close {
+  right: 0;
+  top: 0;
+}
+
+
+/* Hamburger menu click response */
+
+.main-menu:target,
+.main-menu[aria-expanded="true"] {
+  -moz-box-shadow: 3px 0 12px rgba(0,0,0,.25);
+  -webkit-box-shadow: 3px 0 12px rgba(0,0,0,.25);
+  box-shadow: 3px 0 12px rgba(0,0,0,.25);
+  display: block;
+  left: auto;
+  right: 0;
+  outline: none;
+  margin-right: 13px;
+}
+
+
+/* Close hamburger dropdown menu button */
+
+.main-menu:target .menu-close,
+.main-menu[aria-expanded="true"] .menu-close {
+  background-color: #000;
+  color: var(--menu-primary);
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  line-height: 1em;
+  text-align: right;
+  width: 200px;
+  z-index: 1001;
+}
+
+
+/* Hamburger dropdown menu list */
+
+.main-menu:target ul,
+.main-menu[aria-expanded="true"] ul {
+  position: absolute;
+  right: 0px;
+  z-index: 1000;
+}
+
+/* Hamburger dropdown menu backdrop */
+
+.main-menu:target + .backdrop,
+.main-menu[aria-expanded="true"] + .backdrop{
+  background: #000;
+  background: rgba(0,0,0,.85);
+  cursor: default;
+  display: block;
+  position: absolute;
+  left: auto;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 998;
+}
+
+/* Make the hamburger menu backdrop fixed, if supported */
+
+@supports (position: fixed) {
+  /* Allow backdrop to stay fixed and not "scroll" */
+  .main-menu,
+  .main-menu:target + .backdrop,
+  .main-menu[aria-expanded="true"] + .backdrop {
+    position: fixed;
+  }
+}
+
+
+/* Style for the individual bars in the hamburger button */
+
+.hamburger-bar {
+  background-color: var(--base);
+  display: block;
+  margin-top: 3px;
+  transition: 0.4s;
+  height: 3px;
+  width: 22px;
+}
+
+
+/* Theme toggler */
+
+.toggle-mode {
+  border: 1px solid var(--base);
+  border-radius: 10px;
+  width: 11rem;
+}
+
+.dark-mode {
+  color:var(--light-mode-base);
+  background-color:var(--light-mode-bg);
+}
+.dark-mode *:hover{
+  border: 1px solid var(--primary);
+  color:var(--primary);
+  background-color:var(--light-mode-bg);
+}
+
+.light-mode{
+  color:var(--light-mode-base);
+  background-color:var(--light-mode-bg);
+}
+.light-mode *:hover{
+  border: 1px solid var(--primary);
+  color:var(--primary);
+  background-color:var(--light-mode-bg);
+}
+
+.theme-toggler-icon{
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  fill: currentColor;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  height: 1em;
+  line-height: 1em;
+  margin-left: .2em;
+  margin-right: .2em;
+  margin-top: .2em;
+  stroke-width: 0;
+  stroke: currentColor;
+  speak: none;
+  text-align: center;
+  text-transform: none;
+  width: 1em;
+}
+
+
+/* Contacts and SVG icons */
+
+.contacts ul{
+  display:flex;
+  flex-flow:row wrap;
+  flex-grow:0;
+  flex-shrink:0;
+  list-style:none;
+  padding:0;
+  /*margin:.625rem -.1875rem;*/
+  margin:0.5rem;
+  width:12rem;
+}
+
+.contacts li{
+  padding:0;
+  margin:.25rem;
+  display:flex;
+  align-content:center;
+  align-items:center;
+  justify-content:center;
+  height:2.1875rem;
+  width:2.1875rem;
+  line-height:2.1875rem;
+  border-radius:50%;
+  text-align:center;
+  border:1px solid var(--gray-border)
+}
+
+.contacts a{
+  border:0;
+  display:flex;
+  color:var(--base)
+}
+
+.contacts a:focus,.contacts a:hover{
+  color:var(--primary)
+}
+
+.contact-icon{
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  fill: currentColor;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  height: 1em;
+  line-height: 1em;
+  margin-left: .2em;
+  margin-right: .2em;
+  stroke-width: 0;
+  stroke: currentColor;
+  speak: none;
+  text-align: center;
+  text-transform: none;
+  width: 1em;
+}
+
+
+/* Content theme */
+
+.copyright {
+  margin: 1rem;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+  float: left;
+  margin: 15px;
+}
+
+.title-block {
+  float: left;
+  margin: 5px;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.82813rem;
+}
+
+.page {
+  margin-left: 1rem;
+  width: 80%;
+}
+
+.subtitle {
+  font-size: 1rem;
+  line-height: 1.625rem;
+}
+
+.theme-toggler {
+  margin-left: 60px;
+  margin-right: 180px;
+  margin-top: 10px;
+}
+
+.clear:before,.clear:after{
+  content:" ";
+  display:table;
+}
+.clear:after{
+  clear:both;
+}
+.clear{
+  /*float: right;
+  padding-top:10px;*/
+  *zoom:1;
+}
+
+
+/*** Media directives ***/
+
+
+/* Top menu styling for large screens. */
+
+@media only screen and (min-width: 1024px) {
+
+  /* Make the text only half the screen for legibility's sake */
+  .page {
+    width: 50%;
+  }
+
+  /* Hide the hamburger */
+
+  .menu-toggle,
+  .main-menu .menu-close,
+  .main-menu:target .menu-close,
+  .main-menu[aria-expanded="true"] .menu-close {
+    display: none;
+  }
+
+  /* Align it with the title box */
+  .hamburger-house {
+    left: auto;
+    right: auto;
+    float: inherit;
+    padding-left: 0px;
+    position: relative;
+    top: auto;
+    width: max-content;
+  }
+
+  /* Undo positioning of off-canvas menu */
+
+  .main-menu {
+    display: block;
+    position: relative;
+    top: auto;
+    height: auto;
+  }
+
+  .main-menu ul {
+    /* Allow for full height of menu */
+    display: flex;
+
+    /* Undo off-canvas styling */
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 20px;
+    height: auto;
+    width: auto;
+  }
+
+  .main-menu a {
+    border: 0 !important; /* Remove borders from off-canvas styling */
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .main-menu a:hover,
+  .main-menu a:focus {
+    background: none; /* Remove background from off-canvas styling */
+  }
+
+  .logo {
+    height: 75px;
+    width: 75px;
+  }
+
+  .theme-toggler {
+    text-align: none;
+    margin-left: 500px;
+  }
+}
